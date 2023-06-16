@@ -21,7 +21,7 @@ public class UserController {
 	private UserService userService;
 	
 	
-	@PostMapping
+	@PostMapping("/register")
 	ResponseEntity<UserDTO> registerUser(@RequestBody UserDTO userDTO){
 		log.info("Calling Register User");
 		return userService.registerUser(userDTO);
