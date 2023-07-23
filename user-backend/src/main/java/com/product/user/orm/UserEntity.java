@@ -32,8 +32,9 @@ public class UserEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userId;
 	private String name;
-	@Column(unique = true)
+	@Column(unique = true,nullable = false)
 	private String email;
+	@Column(length = 13)
 	private String mobileNumber;
 	private String password;
 	private Date expiryDate;

@@ -1,5 +1,7 @@
 package com.product.user.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,9 +24,9 @@ public class UserController {
 	
 	
 	@PostMapping("/register")
-	ResponseEntity<UserDTO> registerUser(@RequestBody UserDTO userDTO){
+	ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO,HttpServletRequest request){
 		log.info("Calling Register User");
-		return userService.registerUser(userDTO);
+		return userService.registerUser(userDTO,request);
 	}
 	
 	

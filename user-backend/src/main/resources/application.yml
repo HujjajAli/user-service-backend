@@ -29,5 +29,15 @@ logging:
   #  web:
    #   exposure:
     #    include:
-     #   - '*'   
-        
+     #   - '*'
+     
+password:
+  hashing:
+    algo:
+      argon2:
+         type: 1
+         saltLength:   16
+         hashLength:   32
+         iterations:   4
+         memory:       65586
+         parralellism: 2
