@@ -33,4 +33,13 @@ public class PasswordService {
 		
 		return Argon2Factory.create(type,passwordConfig.getSaltLength(),passwordConfig.getHashLength());
 	}
+	
+	public  boolean verifyPassword(String hashedPassword,String plainPassword) {
+		Argon2 argon2 = getArgon2Instance();
+		boolean verify = argon2.verify(hashedPassword, plainPassword.toCharArray());
+		return verify;
+	}
+	
+
+	
 }

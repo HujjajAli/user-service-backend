@@ -2,6 +2,7 @@ package com.product.user.util.validator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,10 +16,10 @@ import com.product.user.util.exception.UserDataValidationException;
 public class UserValidator {
 	
 	
-	public static Object[] validate(UserDTO userDTO,HttpServletRequest request,ResponseEntity<?> response) {
+	public static Object[] validate(UserDTO userDTO,HttpServletRequest request) {
 		Object[] responseObj = new Object[2]; 
-		ApiError errors = new ApiError();
-		List<String> listOfErrors = new ArrayList<String>();
+		responseObj[0] = false;
+		/*Map<String,String> listOfErrors = new ArrayList<String>();
 		if(userDTO.getEmail() == null || userDTO.getEmail().isEmpty()) {
 			listOfErrors.add("Please Enter Email Address");
 		}
@@ -48,7 +49,8 @@ public class UserValidator {
 		}else {
 			responseObj[0] = false;
 			return responseObj;
-		}
+		}*/
+		return responseObj;
 	}
 
 }

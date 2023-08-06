@@ -3,16 +3,13 @@ package com.product.user.orm;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.JoinColumn;
 
 import org.hibernate.envers.Audited;
 import org.springframework.data.annotation.CreatedBy;
@@ -31,18 +28,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Audited
-public class UserEntity {
+public class RoleEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long userId;
-	private String fullname;
-	@Column(unique = true,nullable = false)
-	private String email;
-	@Column(length = 13)
-	private String mobileNumber;
-	private String password;
-	private Date expiryDate;
+	private Long roleId;
+	private String roleCode;
+	private String roleDescription;
 	
 	@CreatedDate
 	private long createDate;
@@ -53,15 +45,7 @@ public class UserEntity {
 	@LastModifiedBy
 	private String modifiedBy;
 	
-	private String gender;
-	private Date dateOfBirth;
-	
-	   @ManyToMany(fetch = FetchType.LAZY)
-	    @JoinTable(
-	        name = "user_roles",
-	        joinColumns = @JoinColumn(name = "userId"),
-	        inverseJoinColumns = @JoinColumn(name = "roleId")
-	    )
-	    private List<RoleEntity> roles;
+	@ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    private List<UserEntity> users;
 
 }

@@ -19,7 +19,7 @@ public class CustomeExceptionHandler {
 	
 	@ExceptionHandler({UserDataValidationException.class})
 	@ResponseBody
-	public ResponseEntity<?> userDataValidationExceptionandler(Exception e,ServletWebRequest request){
+	public ResponseEntity<ApiError> userDataValidationExceptionandler(Exception e,ServletWebRequest request){
 		ApiError error = new ApiError();
 		error.setPathUri(request.getDescription(true));
 		error.setStatus(HttpStatus.BAD_REQUEST);
